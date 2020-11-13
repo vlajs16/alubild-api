@@ -11,5 +11,6 @@ namespace Domain
         public ICollection<UserRole> UserRoles { get; set; }
         public ICollection<Order> Orders { get; set; }
         public bool Enabled { get; set; }
+        public DateTime RegistrationDate { get; set; }
     }
 }
