@@ -76,9 +76,12 @@ namespace API.Controllers
         }
 
         // PUT api/order/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] string value)
+        [HttpPut("{orderId}")]
+        public async Task<IActionResult> Put(long orderId, [FromBody] OrderToUpdateDto order)
         {
+            var orderForUpdate = _mapper.Map<Order>(order);
+            if(!await _logic.UpdateValues(orderId, orderForUpdate))
+                return BadRequest("Izmena naloga nije uspela.");
             return Ok();
         }
 

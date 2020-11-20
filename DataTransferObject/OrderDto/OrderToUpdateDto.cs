@@ -1,12 +1,12 @@
-﻿using DataTransferObject.OrderItemsDto;
-using Domain;
+﻿using Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DataTransferObject.OrderItemsDto;
 
 namespace DataTransferObject.OrderDto
 {
-    public class OrderToInsertDto
+    public class OrderToUpdateDto
     {
         public long UserId { get; set; }
         public string ClientsName { get; set; }
@@ -17,9 +17,6 @@ namespace DataTransferObject.OrderDto
         public bool Service { get; set; } = false;
         public string Note { get; set; }
         public double Price { get; set; }
-        public string Valute { get; set; }
-        public DateTime? SchedulingDate { get; set; }
-        public ICollection<OrderPhoto> OrderPhotos { get; set; }
         public ICollection<OrderItemDto> OrderItems { get; set; }
     }
 }

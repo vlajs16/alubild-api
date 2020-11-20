@@ -4,14 +4,16 @@ using DataAccessLibrary;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AlubildContext))]
-    partial class AlubildContextModelSnapshot : ModelSnapshot
+    [Migration("20201120150510_AddedPropertiesToOrderItem")]
+    partial class AddedPropertiesToOrderItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,12 +211,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("Delete")
                         .HasColumnType("bit");
 
-                    b.Property<long?>("GlassPackageId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("GlassQualityId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("GuideId")
                         .HasColumnType("int");
 
@@ -232,12 +228,6 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
-
-                    b.Property<long?>("SeriesId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("SeriesManufacturerId")
-                        .HasColumnType("bigint");
 
                     b.Property<int>("Side")
                         .HasColumnType("int");
@@ -260,10 +250,6 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("ColorId");
 
-                    b.HasIndex("GlassPackageId");
-
-                    b.HasIndex("GlassQualityId");
-
                     b.HasIndex("GuideId");
 
                     b.HasIndex("QualityId");
@@ -273,8 +259,6 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("TypologyId");
 
                     b.HasIndex("OrderId", "OrderUserId");
-
-                    b.HasIndex("SeriesId", "SeriesManufacturerId");
 
                     b.ToTable("OrderItems");
                 });
@@ -677,14 +661,6 @@ namespace DataAccessLayer.Migrations
                         .WithMany()
                         .HasForeignKey("ColorId");
 
-                    b.HasOne("Domain.GlassPackage", "GlassPackage")
-                        .WithMany()
-                        .HasForeignKey("GlassPackageId");
-
-                    b.HasOne("Domain.GlassQuality", "GlassQuality")
-                        .WithMany()
-                        .HasForeignKey("GlassQualityId");
-
                     b.HasOne("Domain.Guide", "Guide")
                         .WithMany()
                         .HasForeignKey("GuideId");
@@ -706,10 +682,6 @@ namespace DataAccessLayer.Migrations
                         .HasForeignKey("OrderId", "OrderUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Domain.Series", "Series")
-                        .WithMany()
-                        .HasForeignKey("SeriesId", "SeriesManufacturerId");
                 });
 
             modelBuilder.Entity("Domain.OrderPhoto", b =>
