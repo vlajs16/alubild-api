@@ -12,5 +12,6 @@ namespace Domain
         public ICollection<Order> Orders { get; set; }
         public bool Enabled { get; set; }
         public DateTime RegistrationDate { get; set; }
+        public DateTime LastLogin { get; set; }
     }
 }
