@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DataTransferObject.OrderDto;
 using DataTransferObject.OrderItemDto;
+using DataTransferObject.SimpleDto;
 using DataTransferObject.UserDto;
 using Domain;
 using System;
@@ -15,13 +16,20 @@ namespace Helpers
             CreateMap<UserForRegisterDto, User>();
             CreateMap<User, UserDetailDto>();
 
-            CreateMap<OrderItemForInsertDto, OrderItem>();
+            CreateMap<CategoryDto, Category>();
+            CreateMap<ColorDto, Color>();
+            CreateMap<GlassPackageDto, GlassPackage>();
+            CreateMap<QualityDto, Quality>();
+            CreateMap<SeriesDto, Series>();
+
+            CreateMap<OrderItemDto, OrderItem>();
 
             CreateMap<Order, OrderForList>();
             CreateMap<OrderToInsertDto, Order>()
                 .ForMember(dest => dest.User,
                 opt => opt.MapFrom(x => new User { Id = x.UserId }));
-            
+            CreateMap<OrderToUpdateDto, Order>();
+
         }
     }
 }

@@ -22,6 +22,12 @@ namespace Domain
         public Quality Quality { get; set; }
         public Guide Guide { get; set; }
         public Tabakera Tabakera { get; set; }
+        public GlassQuality GlassQuality { get; set; }
+        public GlassPackage GlassPackage { get; set; }
+        public Series Series { get; set; }
+        public bool Delete { get; set; } = false;
+        public bool Update { get; set; } = false;
+        public bool Insert { get; set; } = false;
 
     }
 }

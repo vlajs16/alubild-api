@@ -150,16 +150,74 @@ namespace Logic
             }
         }
 
-        public async Task<bool> UpdateValues(Order order)
+        public async Task<bool> UpdateValues(long orderId, Order order)
         {
             try
             {
                 bool modified = false;
-                var orderFromRepo = await _context.Orders.FirstOrDefaultAsync(x => x.Id == order.Id);
+                bool notification = false;
+                var orderFromRepo = await _context.Orders
+                    .Include(x => x.OrderItems).ThenInclude(x => x.Color)
+                    .Include(x => x.OrderItems).ThenInclude(x => x.Guide)
+                    .Include(x => x.OrderItems).ThenInclude(x => x.Category)
+                    .Include(x => x.OrderItems).ThenInclude(x => x.Tabakera)
+                    .Include(x => x.OrderItems).ThenInclude(x => x.Quality)
+                    .FirstOrDefaultAsync(x => x.Id == orderId);
                 if (orderFromRepo == null)
                     return false;
                 
+                if(orderFromRepo.ClientsAdress != order.ClientsAdress || orderFromRepo.ClientsEmail != order.ClientsEmail 
+                    || orderFromRepo.ClientsName != order.ClientsName || orderFromRepo.ClientsPhoneNumber != order.ClientsPhoneNumber
+                    || orderFromRepo.ClientsSurname != order.ClientsSurname)
+                {
+                    orderFromRepo.ClientsAdress = order.ClientsAdress;
+                    orderFromRepo.ClientsEmail = order.ClientsEmail;
+                    orderFromRepo.ClientsName = order.ClientsName;
+                    orderFromRepo.ClientsPhoneNumber = order.ClientsPhoneNumber;
+                    orderFromRepo.ClientsSurname = order.ClientsSurname;
+                    modified = true;
+                }
 
+                foreach (var item in order.OrderItems)
+                {
+                    if (item.Update)
+                    {
+                        foreach (var itemRepo in orderFromRepo.OrderItems)
+                        {
+                            if (item.Id == itemRepo.Id)
+                            {
+                                itemRepo.Category = item.Category;
+                                itemRepo.Color = item.Color;
+                                itemRepo.ColorString = item.ColorString;
+                                itemRepo.Guide = item.Guide;
+                                itemRepo.Height = item.Height;
+                                itemRepo.Note = item.Note;
+                                itemRepo.Quality = item.Quality;
+                                itemRepo.Quantity = item.Quantity;
+                                itemRepo.Side = item.Side;
+                                itemRepo.Tabakera = item.Tabakera;
+                                itemRepo.Typology = item.Typology;
+                                itemRepo.Width = item.Width;
+                                break;
+                            }
+                        }
+                    }
+                    else if (item.Delete)
+                        orderFromRepo.OrderItems.Remove(item);
+                    else if (item.Insert)
+                        orderFromRepo.OrderItems.Add(item);
+                    else
+                        continue;
+                    item.Delete = false;
+                    item.Update = false;
+                    item.Insert = false;
+                    notification = true;
+                    modified = true;
+                }
+                if (notification)
+                    Debug.WriteLine("Salje se obavestenje o izmeni naloga.");
+                if (modified == false)
+                    return false;
                 _context.Orders.Update(orderFromRepo);
                 return await _context.SaveChangesAsync() > 0;
             }
@@ -168,6 +226,11 @@ namespace Logic
                 Debug.WriteLine(">>>>>> " + ex.Message);
                 return false;
             }
+        }
+
+        public Task<bool> UpdatePhotos(long orderId, Order order)
+        {
+            throw new NotImplementedException();
         }
     }
 }
