@@ -17,8 +17,7 @@ namespace Domain
         public DateTime DateCreated { get; set; }
         public bool Service { get; set; } = false;
         public string Note { get; set; }
-        public double Price { get; set; }
-        public string Valute { get; set; }
+        public double? Price { get; set; }
         public DateTime? SchedulingDate { get; set; }
         public ICollection<OrderPhoto> OrderPhotos { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }

@@ -10,6 +10,7 @@ namespace Domain
         public string Surname { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
         public ICollection<Order> Orders { get; set; }
+        public ICollection<UserLog> UserLogs { get; set; }
         public bool Enabled { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime LastLogin { get; set; }

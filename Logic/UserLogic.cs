@@ -21,11 +21,34 @@ namespace Logic
             _context = context;
         }
 
+        public async Task<bool> DisableUser(long id)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+                if (user == null)
+                    return false;
+
+                user.Enabled = false;
+
+                _context.Update(user);
+                return await _context.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(">>>>>>> " + ex.Message);
+                return false;
+            }
+        }
+
         public async Task<User> Get(long id)
         {
             try
             {
-                var userFromDb = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+                var userFromDb = await _context.Users
+                    .Include(x => x.UserLogs.OrderByDescending(p => p.LogDateTime).Take(5))
+                    .Include(x => x.Orders.OrderByDescending(p => p.DateCreated).Take(5))
+                    .FirstOrDefaultAsync(x => x.Id == id);
                 return userFromDb;
 
             }
@@ -36,7 +59,7 @@ namespace Logic
             }
         }
 
-        public Task<ICollection<User>> Get(UserParams userParams)
+        public async Task<PagedList<User>> Get(UserParams userParams)
         {
             try
             {
@@ -66,7 +89,9 @@ namespace Logic
                     }
                 }
 
-                return null;
+                var pagedList = await PagedList<User>
+                    .CreateAsync(usersFromDb, userParams.PageNumber, userParams.PageSize);
+                return pagedList;
             }
             catch (Exception ex)
             {

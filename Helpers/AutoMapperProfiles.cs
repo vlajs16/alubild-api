@@ -2,6 +2,7 @@
 using DataTransferObject.OrderDto;
 using DataTransferObject.OrderItemDto;
 using DataTransferObject.UserDto;
+using DataTransferObject.UserLogDto;
 using Domain;
 using System;
 
@@ -21,6 +22,8 @@ namespace Helpers
             CreateMap<OrderToInsertDto, Order>()
                 .ForMember(dest => dest.User,
                 opt => opt.MapFrom(x => new User { Id = x.UserId }));
+            
+            CreateMap<UserLog, UserLogListDto>();
             
         }
     }
