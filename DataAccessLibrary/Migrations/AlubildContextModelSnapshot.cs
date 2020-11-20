@@ -165,7 +165,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
+                    b.Property<double?>("Price")
                         .HasColumnType("float");
 
                     b.Property<DateTime?>("SchedulingDate")
@@ -173,9 +173,6 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<bool>("Service")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Valute")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id", "UserId");
 
@@ -457,6 +454,9 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<bool>("Enabled")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastLogin")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -755,7 +755,7 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("Domain.UserLog", b =>
                 {
                     b.HasOne("Domain.User", "User")
-                        .WithMany()
+                        .WithMany("UserLogs")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

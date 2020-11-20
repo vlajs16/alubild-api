@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using DataTransferObject.OrderDto;
-using DataTransferObject.OrderItemDto;
+using DataTransferObject.OrderItemsDto;
 using DataTransferObject.SimpleDto;
 using DataTransferObject.UserDto;
+using DataTransferObject.UserLogDto;
 using Domain;
 using System;
 
@@ -29,7 +30,8 @@ namespace Helpers
                 .ForMember(dest => dest.User,
                 opt => opt.MapFrom(x => new User { Id = x.UserId }));
             CreateMap<OrderToUpdateDto, Order>();
-
+            
+            CreateMap<UserLog, UserLogListDto>();
         }
     }
 }
