@@ -94,8 +94,15 @@ namespace Logic
                     item.Typology = await _context.Typologies.FirstOrDefaultAsync(x => x.Id == item.Typology.Id);
                     item.Quality = await _context.Qualities.FirstOrDefaultAsync(x => x.Id == item.Quality.Id);
                     item.Color = await _context.Colors.FirstOrDefaultAsync(x => x.Id == item.Color.Id);
+                    if(item.GlassPackage != null && item.GlassQuality != null)
+                    {
+                        item.GlassPackage = await _context.GlassPackages.FirstOrDefaultAsync(x => x.Id == item.GlassPackage.Id);
+                        item.GlassQuality = await _context.GlassQualities.FirstOrDefaultAsync(x => x.Id == item.GlassQuality.Id);
+                    }
                     if (item.Guide != null)
                         item.Guide = await _context.Guides.FirstOrDefaultAsync(x => x.Id == item.Guide.Id);
+                    if (item.Series != null)
+                        item.Series = await _context.Series.FirstOrDefaultAsync(x => x.Id == item.Series.Id);
                     if (item.Tabakera != null)
                         item.Tabakera = await _context.Tabakeras.FirstOrDefaultAsync(x => x.Id == item.Tabakera.Id);
                 }
@@ -162,6 +169,9 @@ namespace Logic
                     .Include(x => x.OrderItems).ThenInclude(x => x.Category)
                     .Include(x => x.OrderItems).ThenInclude(x => x.Tabakera)
                     .Include(x => x.OrderItems).ThenInclude(x => x.Quality)
+                    .Include(x => x.OrderItems).ThenInclude(x => x.GlassPackage)
+                    .Include(x => x.OrderItems).ThenInclude(x => x.GlassQuality)
+                    .Include(x => x.OrderItems).ThenInclude(x => x.Series)
                     .FirstOrDefaultAsync(x => x.Id == orderId);
                 if (orderFromRepo == null)
                     return false;
@@ -180,6 +190,21 @@ namespace Logic
 
                 foreach (var item in order.OrderItems)
                 {
+                    item.Quality = await _context.Qualities.FirstOrDefaultAsync(x => x.Id == item.Quality.Id);
+                    item.Color = await _context.Colors.FirstOrDefaultAsync(x => x.Id == item.Color.Id);
+                    item.Category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == item.Category.Id);
+
+                    if (item.GlassPackage != null)
+                        item.GlassPackage = await _context.GlassPackages.FirstOrDefaultAsync(x => x.Id == item.GlassPackage.Id);
+                    if(item.GlassQuality != null)
+                        item.GlassQuality = await _context.GlassQualities.FirstOrDefaultAsync(x => x.Id == item.GlassQuality.Id);
+                    if(item.Series != null)
+                        item.Series = await _context.Series.FirstOrDefaultAsync(x => x.Id == item.Series.Id);
+                    if(item.Guide!= null)
+                        item.Guide = await _context.Guides.FirstOrDefaultAsync(x => x.Id == item.Guide.Id);
+                    if(item.Tabakera != null)
+                        item.Tabakera = await _context.Tabakeras.FirstOrDefaultAsync(x => x.Id == item.Tabakera.Id);
+
                     if (item.Update)
                     {
                         foreach (var itemRepo in orderFromRepo.OrderItems)
@@ -198,19 +223,36 @@ namespace Logic
                                 itemRepo.Tabakera = item.Tabakera;
                                 itemRepo.Typology = item.Typology;
                                 itemRepo.Width = item.Width;
+                                itemRepo.Series = item.Series;
+                                itemRepo.GlassQuality = item.GlassQuality;
+                                itemRepo.GlassPackage = item.GlassPackage;
                                 break;
                             }
                         }
                     }
                     else if (item.Delete)
-                        orderFromRepo.OrderItems.Remove(item);
+                    {
+                        var itemForDelete = await _context.OrderItems
+                            .Include(x => x.Color)
+                            .Include(x => x.Guide)
+                            .Include(x => x.Category)
+                            .Include(x => x.Tabakera)
+                            .Include(x => x.Quality)
+                            .Include(x => x.GlassPackage)
+                            .Include(x => x.GlassQuality)
+                            .Include(x => x.Series)
+                            .FirstOrDefaultAsync(x => x.Id == item.Id);
+                        orderFromRepo.OrderItems.Remove(itemForDelete);
+                    }
                     else if (item.Insert)
+                    {
+                        item.Delete = false;
+                        item.Update = false;
+                        item.Insert = false;
                         orderFromRepo.OrderItems.Add(item);
+                    }
                     else
                         continue;
-                    item.Delete = false;
-                    item.Update = false;
-                    item.Insert = false;
                     notification = true;
                     modified = true;
                 }

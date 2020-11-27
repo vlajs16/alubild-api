@@ -24,5 +24,9 @@ namespace DataTransferObject.OrderItemsDto
         public Tabakera Tabakera { get; set; }
         public SeriesDto Series { get; set; }
         public GlassPackageDto GlassPackage { get; set; }
+        public GlassQuality GlassQuality { get; set; }
+        public bool Insert { get; set; }
+        public bool Delete { get; set; }
+        public bool Update { get; set; }
     }
 }
