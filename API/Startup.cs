@@ -55,7 +55,7 @@ namespace API
             builder.AddRoleValidator<RoleValidator<Role>>();
             builder.AddRoleManager<RoleManager<Role>>();
             builder.AddSignInManager<SignInManager<User>>();
-
+            builder.AddDefaultTokenProviders();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -85,6 +85,18 @@ namespace API
 
 
             services.AddTransient<IOrderLogic, OrderLogic>();
+            services.AddTransient<IUserLogic, UserLogic>();
+            services.AddTransient<IManufacturerLogic, ManufacturerLogic>();
+            services.AddTransient<IColorLogic, ColorLogic>();
+            services.AddTransient<ISeriesLogic, SeriesLogic>();
+            services.AddTransient<IQualityLogic, QualityLogic>();
+            services.AddTransient<IGlassPackageLogic, GlassPackageLogic>();
+            services.AddTransient<ICategoryLogic, CategoryLogic>();
+            services.AddTransient<IGuideLogic, GuideLogic>();
+            services.AddTransient<IGlassQualityLogic, GlassQualityLogic>();
+            services.AddTransient<ITabakeraLogic, TabakeraLogic>();
+            services.AddTransient<ITypologyLogic, TypologyLogic>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

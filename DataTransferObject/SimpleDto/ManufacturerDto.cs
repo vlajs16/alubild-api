@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain
+namespace DataTransferObject.SimpleDto
 {
-    public class Manufacturer
+    public class ManufacturerDto
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public Category Category { get; set; }
-        public ICollection<Series> Series { get; set; }
     }
 }

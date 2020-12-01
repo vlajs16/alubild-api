@@ -2,6 +2,7 @@
 using DataTransferObject.OrderDto;
 using DataTransferObject.OrderItemsDto;
 using DataTransferObject.SimpleDto;
+using DataTransferObject.TypologyDto;
 using DataTransferObject.UserDto;
 using DataTransferObject.UserLogDto;
 using Domain;
@@ -17,11 +18,18 @@ namespace Helpers
             CreateMap<UserForRegisterDto, User>();
             CreateMap<User, UserDetailDto>();
 
-            CreateMap<CategoryDto, Category>();
-            CreateMap<ColorDto, Color>();
-            CreateMap<GlassPackageDto, GlassPackage>();
-            CreateMap<QualityDto, Quality>();
-            CreateMap<SeriesDto, Series>();
+            CreateMap<CategoryDto, Category>().ReverseMap();
+            CreateMap<ColorDto, Color>().ReverseMap();
+            CreateMap<GlassPackageDto, GlassPackage>().ReverseMap();
+            CreateMap<QualityDto, Quality>().ReverseMap();
+            CreateMap<SeriesDto, Series>().ReverseMap();
+            CreateMap<Manufacturer, ManufacturerDto>().ReverseMap();
+            CreateMap<Guide, GuideDto>().ReverseMap();
+            CreateMap<GlassQuality, GlassQualityDto>().ReverseMap();
+            CreateMap<Tabakera, TabakeraDto>().ReverseMap();
+
+            CreateMap<Typology, TypologyDto>().ReverseMap();
+
 
             CreateMap<OrderItemDto, OrderItem>();
 

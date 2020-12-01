@@ -41,6 +41,7 @@ namespace API.Controllers
         {
             var user = _mapper.Map<User>(registerUser);
             user.RegistrationDate = DateTime.Now;
+            user.Enabled = true;
 
             var result = _userManager.CreateAsync(user, registerUser.Password).Result;
 
@@ -67,6 +68,9 @@ namespace API.Controllers
             var user = await _userManager.FindByNameAsync(userLogin.UserName);
             if (user == null)
                 return Unauthorized($"Ne postoji korisnik sa korisničkim imenom {userLogin.UserName}");
+
+            if (!user.Enabled)
+                return (Unauthorized("Ovaj nalog je suspendovan"));
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, userLogin.Password, false);
 

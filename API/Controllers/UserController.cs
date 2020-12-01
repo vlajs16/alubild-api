@@ -59,14 +59,18 @@ namespace API.Controllers
             return Ok(users);
         }
 
-        [HttpPost("password")]
-        public async Task<IActionResult> ChangePassword([FromBody] UserChangePasswordDto userChange)
+        [HttpPut("password/{id}")]
+        public async Task<IActionResult> ChangePassword(long id, [FromBody] UserChangePasswordDto userChange)
         {
+            userChange.Id = id;
             var user = await _userManager.FindByIdAsync(userChange.Id.ToString());
             if (user == null)
                 return NotFound("Korisnik nije pronadjen");
 
-            if(await _userManager.CheckPasswordAsync(user, userChange.OldPassword))
+            if (!user.Enabled)
+                return (Unauthorized("Ovaj nalog je suspendovan"));
+
+            if (!await _userManager.CheckPasswordAsync(user, userChange.OldPassword))
             {
                 return BadRequest("Pogrešan unos trenutne šifre šifru");
             }
@@ -81,15 +85,20 @@ namespace API.Controllers
             return BadRequest("Neuspešna izmena šifre, pokušajte ponovo");
         }
 
-        [HttpPost("email")]
-        public async Task<IActionResult> ChangeEmail([FromBody] UserChangeEmailPhone userChange)
+        [HttpPut("email/{id}")]
+        public async Task<IActionResult> ChangeEmail(long id, [FromBody] UserChangeEmailPhone userChange)
         {
             if (string.IsNullOrWhiteSpace(userChange.Email))
                 return BadRequest("Email nije unet");
 
+            userChange.Id = id;
+
             var user = await _userManager.FindByIdAsync(userChange.Id.ToString());
             if (user == null)
                 return NotFound("Korisnik nije pronadjen");
+
+            if (!user.Enabled)
+                return (Unauthorized("Ovaj nalog je suspendovan"));
 
             var token = await _userManager.GenerateChangeEmailTokenAsync(user, userChange.Email);
             var result = await _userManager.ChangeEmailAsync(user, userChange.Email, token);
@@ -102,15 +111,20 @@ namespace API.Controllers
             return BadRequest("Nije moguće izmeniti email");
         }
 
-        [HttpPost("phone")]
-        public async Task<IActionResult> ChangePhoneNumber([FromBody] UserChangeEmailPhone userChange)
+        [HttpPut("phone/{id}")]
+        public async Task<IActionResult> ChangePhoneNumber(long id, [FromBody] UserChangeEmailPhone userChange)
         {
             if (string.IsNullOrWhiteSpace(userChange.PhoneNumber))
                 return BadRequest("Telefon nije unet");
 
+            userChange.Id = id;
+
             var user = await _userManager.FindByIdAsync(userChange.Id.ToString());
             if (user == null)
                 return NotFound("Korisnik nije pronadjen");
+
+            if (!user.Enabled)
+                return (Unauthorized("Ovaj nalog je suspendovan"));
 
             var token = await _userManager.GenerateChangePhoneNumberTokenAsync(user, userChange.PhoneNumber);
             var result = await _userManager.ChangePhoneNumberAsync(user, userChange.PhoneNumber, token);
@@ -120,10 +134,10 @@ namespace API.Controllers
                 return Ok("Uspešno ste izmenili svoj broj telefona");
             }
 
-            return BadRequest("Nije moguće izmeniti email");
+            return BadRequest("Nije moguće izmeniti broj telefona");
         }
 
-        [HttpPost("{id}/disable")]
+        [HttpPut("disable/{id}")]
         public async Task<IActionResult> DisableUser(long id)
         {
             if (await _logic.DisableUser(id))

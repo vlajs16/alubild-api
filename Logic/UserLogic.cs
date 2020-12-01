@@ -46,9 +46,12 @@ namespace Logic
             try
             {
                 var userFromDb = await _context.Users
-                    .Include(x => x.UserLogs.OrderByDescending(p => p.LogDateTime).Take(5))
-                    .Include(x => x.Orders.OrderByDescending(p => p.DateCreated).Take(5))
+                    .Include(x => x.UserLogs)
+                    .Include(x => x.Orders)
                     .FirstOrDefaultAsync(x => x.Id == id);
+
+                userFromDb.UserLogs.OrderByDescending(p => p.LogDateTime).Take(5);
+                userFromDb.Orders.OrderByDescending(p => p.DateCreated).Take(5);
                 return userFromDb;
 
             }
