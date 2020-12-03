@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Helpers
 {
-    public class TypologyParams
+    public class TypologyModelParams
     {
         private const int _maxPageSize = 50;
         public int PageNumber { get; set; } = 1;
@@ -16,7 +16,7 @@ namespace Helpers
             set { pageSize = (value > _maxPageSize) ? _maxPageSize : value; }
         }
 
+        public long TypologyId { get; set; }
         public int? CategoryId { get; set; }
-        public string Name { get; set; }
     }
 }

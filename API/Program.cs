@@ -31,6 +31,15 @@ namespace API
                     context.Database.Migrate();
 
                     Seed.SeedRoles(roleManager);
+                    Seed.SeedCategories(context);
+                    Seed.SeedColors(context);
+                    Seed.SeedManufacturers(context);
+                    Seed.SeedQualities(context);
+                    Seed.SeedGlassQualities(context);
+                    Seed.SeedGuides(context);
+                    Seed.SeedTabakera(context);
+                    Seed.SeedTypologies(context);
+                    Seed.SeedTypologyModels(context);
                 }
                 catch (Exception ex)
                 {

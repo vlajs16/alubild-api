@@ -96,6 +96,7 @@ namespace API
             services.AddTransient<IGlassQualityLogic, GlassQualityLogic>();
             services.AddTransient<ITabakeraLogic, TabakeraLogic>();
             services.AddTransient<ITypologyLogic, TypologyLogic>();
+            services.AddTransient<ITypologyModelLogic, TypologyModelLogic>();
 
         }
 

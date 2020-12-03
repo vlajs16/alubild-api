@@ -1,0 +1,632 @@
+﻿[
+  {
+    "name": "JEDNOKRILNI",
+    "photoUrl": "JEDNOKRILNI.png",
+    "typology": {
+      "name": "PROZOR"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "JEDNOKRILNI + FIX",
+    "photoUrl": "JEDNOKRILNI+FIX.png",
+    "typology": {
+      "name": "PROZOR"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "FIX + JEDNOKRILNI + FIX",
+    "photoUrl": "FIX+JEDNOKRILNI+FIX.png",
+    "typology": {
+      "name": "PROZOR"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "JEDNOKRILNI + FIX + JEDNOKRILNI",
+    "photoUrl": "JEDNOKRILNI+FIX+JEDNOKRILNI.png",
+    "typology": {
+      "name": "PROZOR"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DVOKRILNI",
+    "photoUrl": "DVOKRILNI-PROZOR.png",
+    "typology": {
+      "name": "PROZOR"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DVOKRILNI + FIX",
+    "photoUrl": "DVOKRILNI+FIX.png",
+    "typology": {
+      "name": "PROZOR"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "FIX + DVOKRILNI + FIX",
+    "photoUrl": "FIX+DVOKRILNI+FIX.png",
+    "typology": {
+      "name": "PROZOR"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "FIKSNO",
+    "photoUrl": "FIX.png",
+    "typology": {
+      "name": "PROZOR"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "VENTOS",
+    "photoUrl": "VENTOS.png",
+    "typology": {
+      "name": "PROZOR"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "JEDNOKRILNA",
+    "photoUrl": "JEDNOKRILNA.png",
+    "typology": {
+      "name": "VRATA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "JEDNOKRILNA + NADSVETLO",
+    "photoUrl": "JEDNOKRILNA+NADSVETLO.png",
+    "typology": {
+      "name": "VRATA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DVOKRILNA",
+    "photoUrl": "DVOKRILNA.png",
+    "typology": {
+      "name": "VRATA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DVOKRILNA + NADSVETLO",
+    "photoUrl": "DVOKRILNA+NADSVETLO.png",
+    "typology": {
+      "name": "VRATA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      },
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "3+0",
+    "photoUrl": "3+0.png",
+    "typology": {
+      "name": "HARMONIKA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "3+1",
+    "photoUrl": "3+1.png",
+    "typology": {
+      "name": "HARMONIKA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "3+3",
+    "photoUrl": "3+3.png",
+    "typology": {
+      "name": "HARMONIKA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "5+0",
+    "photoUrl": "5+0.png",
+    "typology": {
+      "name": "HARMONIKA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "SPOLJAŠNJA - KUTIJA 190",
+    "typology": {
+      "name": "ROLETNA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "SPOLJAŠNJA - KUTIJA 170",
+    "typology": {
+      "name": "ROLETNA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "UNUTRAŠNJA - KUTIJA 195",
+    "typology": {
+      "name": "ROLETNA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "UNUTRAŠNJA - KUTIJA 172",
+    "typology": {
+      "name": "ROLETNA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "UNUTRAŠNJA - KUTIJA 145",
+    "typology": {
+      "name": "ROLETNA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "UNUTRAŠNJA PVC ZASTOR - KUTIJA 200",
+    "typology": {
+      "name": "ROLETNA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "UNUTRAŠNJA PVC ZASTOR - KUTIJA 180",
+    "typology": {
+      "name": "ROLETNA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "UNUTRAŠNJA ALU ZASTOR - KUTIJA 200",
+    "typology": {
+      "name": "ROLETNA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "UNUTRAŠNJA ALU ZASTOR - KUTIJA 180",
+    "typology": {
+      "name": "ROLETNA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "PVC"
+        }
+      }
+    ]
+  },
+  {
+    "name": "JEDNOKRILNA - FIKSNE LAMELICE",
+    "photoUrl": "FIXNE-LAMELICA.png",
+    "typology": {
+      "name": "ŽALUZINA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "JEDNOKRILNA - POKRETNE LAMELICE",
+    "photoUrl": "POKRETNE-LAMELICA.png",
+    "typology": {
+      "name": "ŽALUZINA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DVOKRILNA - FIKSNE LAMELICE",
+    "photoUrl": "FIXNE-LAMELICE.png",
+    "typology": {
+      "name": "ŽALUZINA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DVOKRILNA - POKRETNE LAMELICE",
+    "photoUrl": "POKRETNE-LAMELICE.png",
+    "typology": {
+      "name": "ŽALUZINA"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DVOKRILNI",
+    "photoUrl": "DVOKRILNI-KLIZNO.png",
+    "typology": {
+      "name": "OBIČNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "TROKRILNI",
+    "photoUrl": "TROKRILNI-KLIZNO.png",
+    "typology": {
+      "name": "OBIČNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "ČETVOROKRILNI",
+    "photoUrl": "CETVOROKRILNI-KLIZNO.png",
+    "typology": {
+      "name": "OBIČNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "ŠESTOKRILNI",
+    "photoUrl": "SESTOKRILNI-KLIZNO.png",
+    "typology": {
+      "name": "OBIČNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "JEDNOKRILNI + FIX",
+    "photoUrl": "JEDNOKRILNI+FIX-PK.png",
+    "typology": {
+      "name": "PODIZNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "FIX + JEDNOKRILNI + FIX",
+    "photoUrl": "FIX+JEDNOKRILNI+FIX-PK.png",
+    "typology": {
+      "name": "PODIZNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DVOKRILNI",
+    "photoUrl": "DVOKRILNI-PK.png",
+    "typology": {
+      "name": "PODIZNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "FIX + DVOKRILNI + FIX",
+    "photoUrl": "FIX+DVOKRILNI+FIX-PK.png",
+    "typology": {
+      "name": "PODIZNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "TROKRILNI",
+    "photoUrl": "TROKRILNI-PK.png",
+    "typology": {
+      "name": "PODIZNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "ČETVOROKRILNI",
+    "photoUrl": "CETVOROKRILNI-PK.png",
+    "typology": {
+      "name": "PODIZNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  },
+  {
+    "name": "SESTOKRILNI",
+    "photoUrl": "SESTOKRILNI-PK.png",
+    "typology": {
+      "name": "PODIZNO KLIZNO"
+    },
+    "typologyModelCategories": [
+      {
+        "category": {
+          "name": "ALU"
+        }
+      }
+    ]
+  }
+]

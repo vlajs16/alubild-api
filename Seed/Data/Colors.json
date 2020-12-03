@@ -1,0 +1,62 @@
+[
+  {
+    "name": "RAL9016",
+    "category": {
+      "name": "ALU"
+    }
+  },
+  {
+    "name": "RAL8014",
+    "category": {
+      "name": "ALU"
+    }
+  },
+  {
+    "name": "RAL8017",
+    "category": {
+      "name": "ALU"
+    }
+  },
+  {
+    "name": "ELOX S1",
+    "category": {
+      "name": "ALU"
+    }
+  },
+  {
+    "name": "DVOBOJNO",
+    "category": {
+      "name": "ALU"
+    }
+  },
+  {
+    "name": "BELA",
+    "category": {
+      "name": "PVC"
+    }
+  },
+  {
+    "name": "ZLATNI HRAST",
+    "category": {
+      "name": "PVC"
+    }
+  },
+  {
+    "name": "MAHAGONI",
+    "category": {
+      "name": "PVC"
+    }
+  },
+  {
+    "name": "ANTRACIT",
+    "category": {
+      "name": "PVC"
+    }
+  },
+  {
+    "name": "DVOBOJNO",
+    "category": {
+      "name": "PVC"
+    }
+  }
+]

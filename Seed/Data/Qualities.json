@@ -1,0 +1,26 @@
+﻿[
+  {
+    "name": "Termo prekid",
+    "category": {
+      "name": "ALU" 
+    }
+  },
+  {
+    "name": "Hladan",
+    "category": {
+      "name": "ALU"
+    }
+  },
+  {
+    "name": "Šestokomorni",
+    "category": {
+      "name": "PVC"
+    }
+  },
+  {
+    "name": "Četvorokomorni",
+    "category": {
+      "name": "PVC"
+    }
+  }
+]

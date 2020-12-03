@@ -1,0 +1,59 @@
+[
+  {
+    "name": "Alumil",
+    "category": {
+      "name": "ALU"
+    },
+    "series": [
+      {
+        "name": "M9800"
+      },
+      {
+        "name": "M19800"
+      },
+      {
+        "name": "M11000"
+      },
+      {
+        "name": "M9400"
+      },
+      {
+        "name": "S67"
+      },
+      {
+        "name": "S350"
+      },
+      {
+        "name": "S560"
+      }
+    ]
+  },
+  {
+    "name": "Altest",
+    "category": {
+      "name": "ALU"
+    },
+    "series": [
+      {
+        "name": "Poni"
+      },
+      {
+        "name": "Eskimo"
+      },
+      {
+        "name": "Mini"
+      }
+    ]
+  },
+  {
+    "name": "Kmg",
+    "category": {
+      "name":"PVC"
+    },
+    "series": [
+      {
+        "name": "70 prestige"
+      }
+    ]
+  }
+]

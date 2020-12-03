@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Interfaces
 {
-    public interface ITypologyLogic
+    public interface ITypologyLogic : IRepository<Typology>
     {
-        Task<PagedList<Typology>> GetTypologies(TypologyParams typologyParams);
-        Task<Typology> GetTypology(long id);
-        Task<ICollection<string>> GetTypologyNames(int categoryId);
     }
 }

@@ -399,13 +399,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("Guide")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Model")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhotoUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Tabakera")
@@ -416,19 +410,45 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Typologies");
                 });
 
-            modelBuilder.Entity("Domain.TypologyCategory", b =>
+            modelBuilder.Entity("Domain.TypologyModel", b =>
                 {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<long>("TypologyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id", "TypologyId");
+
+                    b.HasIndex("TypologyId");
+
+                    b.ToTable("TypologyModels");
+                });
+
+            modelBuilder.Entity("Domain.TypologyModelCategory", b =>
+                {
+                    b.Property<long>("TypologyModelId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TypologyModelTypologyId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.HasKey("TypologyId", "CategoryId");
+                    b.HasKey("TypologyModelId", "TypologyModelTypologyId", "CategoryId");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("TypologyCategories");
+                    b.ToTable("TypologyModelCategories");
                 });
 
             modelBuilder.Entity("Domain.User", b =>
@@ -731,23 +751,32 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("Domain.Series", b =>
                 {
                     b.HasOne("Domain.Manufacturer", "Manufacturer")
-                        .WithMany()
+                        .WithMany("Series")
                         .HasForeignKey("ManufacturerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.TypologyCategory", b =>
+            modelBuilder.Entity("Domain.TypologyModel", b =>
+                {
+                    b.HasOne("Domain.Typology", "Typology")
+                        .WithMany("TypologyModels")
+                        .HasForeignKey("TypologyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.TypologyModelCategory", b =>
                 {
                     b.HasOne("Domain.Category", "Category")
-                        .WithMany("TypologyCategories")
+                        .WithMany("TypologyModelCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Typology", "Typology")
-                        .WithMany("TypologyCategories")
-                        .HasForeignKey("TypologyId")
+                    b.HasOne("Domain.TypologyModel", "TypologyModel")
+                        .WithMany("TypologyModelCategories")
+                        .HasForeignKey("TypologyModelId", "TypologyModelTypologyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

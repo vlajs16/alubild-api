@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using DataTransferObject.TypologyDto;
+using DataTransferObject.TypologyDtos;
 using Helpers;
 using Logic.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/typology")]
     [ApiController]
     public class TypologyController : ControllerBase
     {
@@ -25,14 +25,11 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] TypologyParams typologyParams)
+        public async Task<IActionResult> Get()
         {
-            var typologies = await _logic.GetTypologies(typologyParams);
+            var typologies = await _logic.GetAll();
             if (typologies == null)
                 return NotFound("Tipologije nisu pronađene");
-
-            Response.AddPagination(typologies.CurrentPage, typologies.PageSize,
-                typologies.TotalCount, typologies.TotalPages);
 
             var typologiesToReturn = _mapper.Map<ICollection<TypologyDto>>(typologies);
 
@@ -42,7 +39,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(long id)
         {
-            var typologyFromRepo = await _logic.GetTypology(id);
+            var typologyFromRepo = await _logic.GetById(id);
 
             if (typologyFromRepo == null)
                 return NotFound("Tipologija nije pronađena");
@@ -51,16 +48,5 @@ namespace API.Controllers
             return Ok(typology);
         }
 
-        [HttpGet("category/{id}")]
-        public async Task<IActionResult> GetByCategory(int id)
-        {
-            var namesFromRepo = await _logic.GetTypologyNames(id);
-
-            if (namesFromRepo == null)
-                return NotFound();
-
-            return Ok(namesFromRepo);
-            
-        }
     }
 }

@@ -2,7 +2,8 @@
 using DataTransferObject.OrderDto;
 using DataTransferObject.OrderItemsDto;
 using DataTransferObject.SimpleDto;
-using DataTransferObject.TypologyDto;
+using DataTransferObject.TypologyDtos;
+using DataTransferObject.TypologyModelDtos;
 using DataTransferObject.UserDto;
 using DataTransferObject.UserLogDto;
 using Domain;
@@ -29,6 +30,7 @@ namespace Helpers
             CreateMap<Tabakera, TabakeraDto>().ReverseMap();
 
             CreateMap<Typology, TypologyDto>().ReverseMap();
+            CreateMap<TypologyModel, TypologyModelDto>();
 
 
             CreateMap<OrderItemDto, OrderItem>();

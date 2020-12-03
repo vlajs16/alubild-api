@@ -1,0 +1,50 @@
+﻿[
+  {
+    "name": "PROZOR",
+    "glass": true,
+    "guide": false,
+    "tabakera": false
+  },
+  {
+    "name": "VRATA",
+    "glass": true,
+    "guide": false,
+    "tabakera": false
+  },
+  {
+    "name": "ROLETNA",
+    "glass": false,
+    "guide": true,
+    "tabakera": true
+  },
+  {
+    "name": "ŽALUZINA",
+    "glass": false,
+    "guide": false,
+    "tabakera": false
+  },
+  {
+    "name": "KOMARNIK",
+    "glass": false,
+    "guide": false,
+    "tabakera": false
+  },
+  {
+    "name": "OBIČNO KLIZNO",
+    "glass": true,
+    "guide": false,
+    "tabakera": false
+  },
+  {
+    "name": "PODIZNO KLIZNO",
+    "glass": true,
+    "guide": false,
+    "tabakera": false
+  },
+  {
+    "name": "HARMONIKA",
+    "glass": false,
+    "guide": false,
+    "tabakera": false
+  }
+]

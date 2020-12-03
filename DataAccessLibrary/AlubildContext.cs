@@ -15,7 +15,7 @@ namespace DataAccessLibrary
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Typology> Typologies { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<TypologyCategory> TypologyCategories { get; set; }
+        public DbSet<TypologyModelCategory> TypologyModelCategories { get; set; }
         public DbSet<Quality> Qualities { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<GlassQuality> GlassQualities { get; set; }
@@ -25,6 +25,7 @@ namespace DataAccessLibrary
         public DbSet<Tabakera> Tabakeras { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<Series> Series { get; set; }
+        public DbSet<TypologyModel> TypologyModels { get; set; }
 
         public AlubildContext(DbContextOptions<AlubildContext> options)
             : base(options)
@@ -74,18 +75,18 @@ namespace DataAccessLibrary
                 x.Property(p => p.Id).ValueGeneratedOnAdd();
             });
 
-            builder.Entity<TypologyCategory>(x =>
+            builder.Entity<TypologyModelCategory>(x =>
             {
-                x.HasKey(p => new { p.TypologyId, p.CategoryId });
+                x.HasKey(p => new { p.TypologyModelId, p.TypologyModelTypologyId, p.CategoryId });
 
                 x.HasOne(p => p.Category)
-                .WithMany(p => p.TypologyCategories)
+                .WithMany(p => p.TypologyModelCategories)
                 .HasForeignKey(p => p.CategoryId)
                 .IsRequired();
 
-                x.HasOne(p => p.Typology)
-                .WithMany(p => p.TypologyCategories)
-                .HasForeignKey(p => p.TypologyId)
+                x.HasOne(p => p.TypologyModel)
+                .WithMany(p => p.TypologyModelCategories)
+                .HasForeignKey(p => new { p.TypologyModelId, p.TypologyModelTypologyId })
                 .IsRequired();
             });
 
@@ -107,6 +108,12 @@ namespace DataAccessLibrary
             builder.Entity<Series>(x =>
             {
                 x.HasKey(p => new { p.Id, p.ManufacturerId });
+                x.Property(p => p.Id).ValueGeneratedOnAdd();
+            });
+
+            builder.Entity<TypologyModel>(x =>
+            {
+                x.HasKey(p => new { p.Id, p.TypologyId });
                 x.Property(p => p.Id).ValueGeneratedOnAdd();
             });
 

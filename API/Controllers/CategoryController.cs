@@ -45,5 +45,17 @@ namespace API.Controllers
             var category = _mapper.Map<CategoryDto>(categoryFromRepo);
             return Ok(category);
         }
+
+        [HttpGet("typology/{id}")]
+        public async Task<IActionResult> GetByTypology(long id)
+        {
+            var categoriesFromRepo = await _logic.GetByTypology(id);
+            if (categoriesFromRepo == null)
+                return NotFound();
+
+            var categories = _mapper.Map<ICollection<CategoryDto>>(categoriesFromRepo);
+
+            return Ok(categories);
+        }
     }
 }
