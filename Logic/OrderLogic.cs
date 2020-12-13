@@ -42,7 +42,8 @@ namespace Logic
             {
                 Order order = await _context.Orders
                     .Include(x => x.OrderItems).ThenInclude(x => x.Category)
-                    .Include(x => x.OrderItems).ThenInclude(x => x.Typology)
+                    .Include(x => x.OrderItems).ThenInclude(x => x.TypologyModel)
+                    .Include(x => x.OrderItems).ThenInclude(x => x.TypologyModel).ThenInclude(x=>x.Typology)
                     .Include(x => x.OrderItems).ThenInclude(x => x.Color)
                     .Include(x => x.OrderItems).ThenInclude(x => x.Quality)
                     .Include(x => x.OrderItems).ThenInclude(x => x.Guide)
@@ -91,7 +92,7 @@ namespace Logic
                 {
                     item.OrderUserId = order.UserId;
                     item.Category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == item.Category.Id);
-                    item.Typology = await _context.Typologies.FirstOrDefaultAsync(x => x.Id == item.Typology.Id);
+                    item.TypologyModel = await _context.TypologyModels.FirstOrDefaultAsync(x => x.Id == item.TypologyModel.Id);
                     item.Quality = await _context.Qualities.FirstOrDefaultAsync(x => x.Id == item.Quality.Id);
                     item.Color = await _context.Colors.FirstOrDefaultAsync(x => x.Id == item.Color.Id);
                     if(item.GlassPackage != null && item.GlassQuality != null)
@@ -221,7 +222,7 @@ namespace Logic
                                 itemRepo.Quantity = item.Quantity;
                                 itemRepo.Side = item.Side;
                                 itemRepo.Tabakera = item.Tabakera;
-                                itemRepo.Typology = item.Typology;
+                                itemRepo.TypologyModel = item.TypologyModel;
                                 itemRepo.Width = item.Width;
                                 itemRepo.Series = item.Series;
                                 itemRepo.GlassQuality = item.GlassQuality;
@@ -233,14 +234,14 @@ namespace Logic
                     else if (item.Delete)
                     {
                         var itemForDelete = await _context.OrderItems
-                            .Include(x => x.Color)
-                            .Include(x => x.Guide)
-                            .Include(x => x.Category)
-                            .Include(x => x.Tabakera)
-                            .Include(x => x.Quality)
-                            .Include(x => x.GlassPackage)
-                            .Include(x => x.GlassQuality)
-                            .Include(x => x.Series)
+                            //.Include(x => x.Color)
+                            //.Include(x => x.Guide)
+                            //.Include(x => x.Category)
+                            //.Include(x => x.Tabakera)
+                            //.Include(x => x.Quality)
+                            //.Include(x => x.GlassPackage)
+                            //.Include(x => x.GlassQuality)
+                            //.Include(x => x.Series)
                             .FirstOrDefaultAsync(x => x.Id == item.Id);
                         orderFromRepo.OrderItems.Remove(itemForDelete);
                     }

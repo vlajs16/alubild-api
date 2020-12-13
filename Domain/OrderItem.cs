@@ -15,7 +15,7 @@ namespace Domain
         public int Quantity { get; set; }
         public string Note { get; set; }
         public Category Category { get; set; }
-        public Typology Typology { get; set; }
+        public TypologyModel TypologyModel { get; set; }
         public Color Color { get; set; }
         public string ColorString { get; set; }
         public SideChecker Side { get; set; }

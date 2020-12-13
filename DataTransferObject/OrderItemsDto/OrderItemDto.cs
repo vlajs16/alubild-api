@@ -15,7 +15,7 @@ namespace DataTransferObject.OrderItemsDto
         public int Quantity { get; set; }
         public string Note { get; set; }
         public CategoryDto Category { get; set; }
-        public Typology Typology { get; set; }
+        public TypologyModel TypologyModel { get; set; }
         public ColorDto Color { get; set; }
         public string ColorString { get; set; }
         public SideChecker Side { get; set; }
