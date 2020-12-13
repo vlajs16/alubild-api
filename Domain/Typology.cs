@@ -11,7 +11,6 @@ namespace Domain
         public bool Glass { get; set; } = false;
         public bool Guide { get; set; } = false;
         public bool Tabakera { get; set; } = false;
-        public ICollection<GlassPackageTypology> GlassPackageTypologies { get; set; }
         public ICollection<TypologyModel> TypologyModels { get; set; }
     }
 }

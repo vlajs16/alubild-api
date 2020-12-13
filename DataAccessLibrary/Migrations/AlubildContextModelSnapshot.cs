@@ -69,21 +69,6 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("GlassPackages");
                 });
 
-            modelBuilder.Entity("Domain.GlassPackageTypology", b =>
-                {
-                    b.Property<long>("TypologyId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("GlassPackageId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("TypologyId", "GlassPackageId");
-
-                    b.HasIndex("GlassPackageId");
-
-                    b.ToTable("GlassPackageTypologies");
-                });
-
             modelBuilder.Entity("Domain.GlassQuality", b =>
                 {
                     b.Property<int>("Id")
@@ -654,21 +639,6 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("Domain.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId");
-                });
-
-            modelBuilder.Entity("Domain.GlassPackageTypology", b =>
-                {
-                    b.HasOne("Domain.GlassPackage", "GlassPackage")
-                        .WithMany("GlassPackageTypologies")
-                        .HasForeignKey("GlassPackageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Typology", "Typology")
-                        .WithMany("GlassPackageTypologies")
-                        .HasForeignKey("TypologyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Manufacturer", b =>

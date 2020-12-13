@@ -47,17 +47,5 @@ namespace API.Controllers
             var glass = _mapper.Map<GlassPackageDto>(glassFromRepo);
             return Ok(glass);
         }
-
-        [HttpGet("typology/{typId}")]
-        public async Task<IActionResult> GetByCategory(long typId)
-        {
-            var glassesFromRepo = await _logic.GetByTypology(typId);
-            if (glassesFromRepo == null)
-                return NotFound("Nisu pronađeni paketi stakla za ovu tipologiju");
-
-            var glasses = _mapper.Map<ICollection<GlassPackageDto>>(glassesFromRepo);
-
-            return Ok(glasses);
-        }
     }
 }

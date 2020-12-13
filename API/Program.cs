@@ -40,6 +40,7 @@ namespace API
                     Seed.SeedTabakera(context);
                     Seed.SeedTypologies(context);
                     Seed.SeedTypologyModels(context);
+                    Seed.SeedGlassPackages(context);
                 }
                 catch (Exception ex)
                 {

@@ -20,7 +20,6 @@ namespace DataAccessLibrary
         public DbSet<Color> Colors { get; set; }
         public DbSet<GlassQuality> GlassQualities { get; set; }
         public DbSet<GlassPackage> GlassPackages { get; set; }
-        public DbSet<GlassPackageTypology> GlassPackageTypologies { get; set; }
         public DbSet<Guide> Guides { get; set; }
         public DbSet<Tabakera> Tabakeras { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
@@ -87,21 +86,6 @@ namespace DataAccessLibrary
                 x.HasOne(p => p.TypologyModel)
                 .WithMany(p => p.TypologyModelCategories)
                 .HasForeignKey(p => new { p.TypologyModelId, p.TypologyModelTypologyId })
-                .IsRequired();
-            });
-
-            builder.Entity<GlassPackageTypology>(x =>
-            {
-                x.HasKey(p => new { p.TypologyId, p.GlassPackageId });
-
-                x.HasOne(p => p.GlassPackage)
-                .WithMany(p => p.GlassPackageTypologies)
-                .HasForeignKey(p => p.GlassPackageId)
-                .IsRequired();
-
-                x.HasOne(p => p.Typology)
-                .WithMany(p => p.GlassPackageTypologies)
-                .HasForeignKey(p => p.TypologyId)
                 .IsRequired();
             });
 

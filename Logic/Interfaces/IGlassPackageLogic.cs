@@ -8,6 +8,5 @@ namespace Logic.Interfaces
 {
     public interface IGlassPackageLogic : IRepository<GlassPackage>
     {
-        Task<ICollection<GlassPackage>> GetByTypology(long id);
     }
 }

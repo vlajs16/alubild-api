@@ -184,5 +184,21 @@ namespace SeedData
                 context.SaveChanges();
             }
         }
+
+        public static void SeedGlassPackages(AlubildContext context)
+        {
+            if (!context.GlassPackages.Any())
+            {
+                var packagesData = System.IO.File.ReadAllText("../Seed/Data/GlassPackages.json");
+                var packages = JsonConvert.DeserializeObject<ICollection<GlassPackage>>(packagesData);
+
+                foreach (var package in packages)
+                {
+                   context.GlassPackages.Add(package);
+                }
+
+                context.SaveChanges();
+            }
+        }
     }
 }
