@@ -51,7 +51,11 @@ namespace API.Controllers
                 if (secondResult.Succeeded)
                 {
                     var userToReturn = _mapper.Map<UserDetailDto>(user);
-                    return Ok(userToReturn);
+                    return Ok(new
+                    {
+                        token = await GenerateJwtToken(user),
+                        user = userToReturn
+                    });
                 }
             }
 
