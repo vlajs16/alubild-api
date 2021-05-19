@@ -8,7 +8,7 @@ namespace Helpers
     {
         private const int _maxPageSize = 50;
         public int PageNumber { get; set; } = 1;
-        private int pageSize = 10;
+        private int pageSize = 50;
 
         public int PageSize
         {
