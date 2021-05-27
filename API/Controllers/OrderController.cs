@@ -37,7 +37,7 @@ namespace API.Controllers
 
         // GET: api/order/user/1
         [HttpGet("user/{id}")]
-        public async Task<IActionResult> GetByUser(long id, [FromQuery]OrderParams orderParams)
+        public async Task<IActionResult> GetByUser(long id, [FromQuery] OrderParams orderParams)
         {
             orderParams.UserId = id;
             var orders = await _logic.GetByUser(orderParams);
@@ -52,9 +52,13 @@ namespace API.Controllers
         {
             var orderToInsert = _mapper.Map<Order>(order);
 
-            if (!await _logic.Insert(orderToInsert))
+            var insertedOrder = await _logic.Insert(orderToInsert);
+            if (insertedOrder == null)
                 return BadRequest("Nije uspelo cuvanje naloga");
-            return Ok();
+
+            var orderToReturn = _mapper.Map<OrderForList>(insertedOrder);
+
+            return Ok(orderToReturn);
         }
 
         // PUT api/order/price/5
@@ -80,7 +84,7 @@ namespace API.Controllers
         public async Task<IActionResult> Put(long orderId, [FromBody] OrderToUpdateDto order)
         {
             var orderForUpdate = _mapper.Map<Order>(order);
-            if(!await _logic.UpdateValues(orderId, orderForUpdate))
+            if (!await _logic.UpdateValues(orderId, orderForUpdate))
                 return BadRequest("Izmena naloga nije uspela.");
             return Ok();
         }
