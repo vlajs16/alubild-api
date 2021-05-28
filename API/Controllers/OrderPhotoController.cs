@@ -8,7 +8,9 @@ using DataTransferObject.OrderPhotoDto;
 using System.IO;
 using Logic.Interfaces;
 using Domain;
+using System.Web;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -50,11 +52,13 @@ namespace API.Controllers
             if (photoToInsert.File.Length > 0)
             {
                 var user = await _userLogic.Get(photoToInsert.UserId);
+                if (user == null)
+                    return BadRequest("User not found");
 
                 var fileName = $"IMG_{user.Name}_{user.Surname}_{photoToInsert.File.FileName}";
                 try
                 {
-                    if (!Directory.Exists( Environment.CurrentDirectory + "\\Uploaded_Documents\\Users\\"))
+                    if (!Directory.Exists(Environment.CurrentDirectory + "\\Uploaded_Documents\\Users\\"))
                     {
                         Directory.CreateDirectory(Environment.CurrentDirectory + "\\Uploaded_Documents\\Users\\");
                     }
@@ -63,7 +67,7 @@ namespace API.Controllers
                         await photoToInsert.File.CopyToAsync(fileStream);
                         fileStream.Flush();
 
-                        var result =  await _orderLogic.InsertPhotoUrl(new OrderPhoto
+                        var result = await _orderLogic.InsertPhotoUrl(new OrderPhoto
                         {
                             Important = true,
                             OrderId = photoToInsert.OrderId,
@@ -75,7 +79,7 @@ namespace API.Controllers
                         return BadRequest();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     return BadRequest(ex.Message);
                 }
@@ -86,4 +90,5 @@ namespace API.Controllers
             }
         }
     }
+
 }
