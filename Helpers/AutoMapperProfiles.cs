@@ -30,7 +30,9 @@ namespace Helpers
             CreateMap<Tabakera, TabakeraDto>().ReverseMap();
 
             CreateMap<Typology, TypologyDto>().ReverseMap();
-            CreateMap<TypologyModel, TypologyModelDto>();
+            CreateMap<TypologyModel, TypologyModelDto>()
+                .ForMember(dest => dest.PhotoUrl,
+                opt => opt.MapFrom(x => "http://localhost:5000/Uploaded_Documents/" + x.PhotoUrl));
 
 
             CreateMap<OrderItemDto, OrderItem>();

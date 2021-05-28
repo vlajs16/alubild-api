@@ -76,13 +76,13 @@ namespace Logic
             }
         }
 
-        public async Task<bool> Insert(Order order)
+        public async Task<Order> Insert(Order order)
         {
             try
             {
                 var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == order.User.Id);
                 if (user == null)
-                    return false;
+                    return null;
                 order.User = user;
                 foreach (var photo in order.OrderPhotos)
                 {
@@ -108,12 +108,14 @@ namespace Logic
                         item.Tabakera = await _context.Tabakeras.FirstOrDefaultAsync(x => x.Id == item.Tabakera.Id);
                 }
                 await _context.AddAsync(order);
-                return await _context.SaveChangesAsync() > 0;
+                if (await _context.SaveChangesAsync() > 0)
+                    return order;
+                return null;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(">>>>>" + ex.Message);
-                return false;
+                return null;
             }
         }
 
@@ -274,6 +276,20 @@ namespace Logic
         public Task<bool> UpdatePhotos(long orderId, Order order)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<bool> InsertPhotoUrl(OrderPhoto photo)
+        {
+            try
+            {
+                await _context.AddAsync(photo);
+                return await _context.SaveChangesAsync() > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(">>>>>> " + ex.Message);
+                return false;
+            }
         }
     }
 }
