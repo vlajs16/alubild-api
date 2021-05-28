@@ -36,12 +36,14 @@ namespace Helpers
 
 
             CreateMap<OrderItemDto, OrderItem>();
+            CreateMap<OrderItemsViewDto, OrderItem>().ReverseMap();
 
             CreateMap<Order, OrderForList>();
             CreateMap<OrderToInsertDto, Order>()
                 .ForMember(dest => dest.User,
                 opt => opt.MapFrom(x => new User { Id = x.UserId }));
             CreateMap<OrderToUpdateDto, Order>();
+            CreateMap<OrderToViewDto, Order>().ReverseMap();
             
             CreateMap<UserLog, UserLogListDto>();
         }

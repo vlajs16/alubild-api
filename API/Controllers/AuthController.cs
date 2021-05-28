@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DataTransferObject.UserDto;
 using Domain;
+using Logic.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -25,16 +26,27 @@ namespace API.Controllers
         private readonly UserManager<User> _userManager;
         private readonly IConfiguration _config;
         private readonly SignInManager<User> _signInManager;
-
+        private readonly IUserLogic _logic;
         public AuthController(IMapper mapper, UserManager<User> userManager, IConfiguration config,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager, IUserLogic logic)
         {
             _mapper = mapper;
             _userManager = userManager;
             _config = config;
             _signInManager = signInManager;
+            _logic = logic;
         }
 
+
+        // GET: api/auth/1
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(long id)
+        {
+            var user = await _logic.Get(id);
+            if (user == null)
+                return NotFound("Nije pronadjen korisnicki nalog");
+            return Ok(user);
+        }
 
         [HttpPost("register")]
         public async Task<IActionResult> Post(UserForRegisterDto registerUser) 

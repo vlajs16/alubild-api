@@ -32,7 +32,8 @@ namespace API.Controllers
             var order = await _logic.GetById(id);
             if (order == null)
                 return NotFound("Nije pronadjen ovaj nalog");
-            return Ok(order);
+            var odredToReturn = _mapper.Map<OrderToViewDto>(order);
+            return Ok(odredToReturn);
         }
 
         // GET: api/order/user/1
@@ -51,6 +52,7 @@ namespace API.Controllers
         public async Task<IActionResult> Post([FromBody] OrderToInsertDto order)
         {
             var orderToInsert = _mapper.Map<Order>(order);
+            orderToInsert.DateCreated = DateTime.Now;
 
             var insertedOrder = await _logic.Insert(orderToInsert);
             if (insertedOrder == null)
