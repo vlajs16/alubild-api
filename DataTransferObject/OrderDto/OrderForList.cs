@@ -11,6 +11,7 @@ namespace DataTransferObject.OrderDto
         public string ClientsSurname { get; set; }
         public string ClientsPhoneNumber { get; set; }
         public string ClientsEmail { get; set; }
+        public bool Service { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? SchedulingDate { get; set; }
     }

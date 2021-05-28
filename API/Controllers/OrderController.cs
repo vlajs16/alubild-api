@@ -93,7 +93,7 @@ namespace API.Controllers
             if (order == null)
                 return NotFound("Ne moze se obrisati nepostojeci order");
             if (await _logic.Delete(order))
-                return Ok("Uspesno obrisan");
+                return Ok();
             return BadRequest("Greska prilikom brisanja");
         }
     }

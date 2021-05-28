@@ -22,8 +22,8 @@ namespace Logic
         {
             try
             {
-                Order o = await _context.Orders.FirstOrDefaultAsync();
-                if (o != null)
+                Order o = await _context.Orders.FirstOrDefaultAsync(x => x.Id == order.Id);
+                if (o == null)
                     return false;
                 _context.Orders.Remove(o);
                 return await _context.SaveChangesAsync() > 0;
