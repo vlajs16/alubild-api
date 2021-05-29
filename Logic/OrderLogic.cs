@@ -181,13 +181,16 @@ namespace Logic
                 
                 if(orderFromRepo.ClientsAdress != order.ClientsAdress || orderFromRepo.ClientsEmail != order.ClientsEmail 
                     || orderFromRepo.ClientsName != order.ClientsName || orderFromRepo.ClientsPhoneNumber != order.ClientsPhoneNumber
-                    || orderFromRepo.ClientsSurname != order.ClientsSurname)
+                    || orderFromRepo.ClientsSurname != order.ClientsSurname || orderFromRepo.SchedulingDate != order.SchedulingDate
+                    || orderFromRepo.Service != order.Service)
                 {
                     orderFromRepo.ClientsAdress = order.ClientsAdress;
                     orderFromRepo.ClientsEmail = order.ClientsEmail;
                     orderFromRepo.ClientsName = order.ClientsName;
                     orderFromRepo.ClientsPhoneNumber = order.ClientsPhoneNumber;
                     orderFromRepo.ClientsSurname = order.ClientsSurname;
+                    orderFromRepo.Service = order.Service;
+                    orderFromRepo.SchedulingDate = order.SchedulingDate;
                     modified = true;
                 }
 
